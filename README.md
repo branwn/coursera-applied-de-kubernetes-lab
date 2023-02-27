@@ -23,19 +23,20 @@ minikube stop
 ## Task 2: Deploy with Kubernetes FastAPI app
 
 1.  Push container to DockerHub (Optional): i.e. 
-`docker build -t <hub-user>/<repo-name>[:<tag>]` and `docker push <hub-user>/<repo-name>:<tag>`
-Example of a pushed FastAPI container here:  https://hub.docker.com/repository/docker/noahgift/fastapi-kube
-2. `minikube start`
-3. `minikube dashboard --url`
-4. Hover over link and "follow link"
-5. Create a deployment: `kubectl create deployment hello-fastapi --image=registry.hub.docker.com/noahgift/fastapi-kube`
-6. View deployment: `kubectl get deployments`
-7. Create service and expose it: `kubectl expose deployment hello-fastapi --type=LoadBalancer --port=8080`
-8. View services:  `kubectl get service hello-fastapi`
-9.  `minikube service hello-fastapi --url`
-10. Curl web service: i.e. `curl http://192.168.49.2:31224`
-11.  Cleanup
-12. Cleanup
+    `docker build -t <hub-user>/<repo-name>[:<tag>]` and `docker push <hub-user>/<repo-name>:<tag>`
+    Example of a pushed FastAPI container here:  https://hub.docker.com/repository/docker/noahgift/fastapi-kube
+2.  `minikube start`
+3.  `minikube dashboard --url`
+4.  Hover over link and "follow link"
+5.  Create a deployment: `kubectl create deployment hello-fastapi --image=registry.hub.docker.com/noahgift/fastapi-kube`
+6.  View deployment: `kubectl get deployments`
+7.  LoadBalancer access: `minikube tunnel`
+8.  Create service and expose it: `kubectl expose deployment hello-fastapi --type=LoadBalancer --port=8080`
+9.  View services:  `kubectl get service hello-fastapi`
+10.  `minikube service hello-fastapi --url`
+11.  Curl web service: i.e. `curl http://192.168.49.2:31224`
+12.  Cleanup
+13.  Cleanup
 ```bash
 kubectl delete service hello-fastapi
 kubectl delete deployment hello-fastapi
