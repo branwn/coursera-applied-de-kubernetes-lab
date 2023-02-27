@@ -16,7 +16,7 @@ class Wiki(BaseModel):
 async def root():
     """Home Page with GET HTTP Method"""
 
-    return {"message": "Hello FastAPI"}
+    return {"message": "Hello World"}
 
 
 @app.get("/fruit")
