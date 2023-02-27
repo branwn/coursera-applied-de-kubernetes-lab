@@ -25,7 +25,7 @@ push:
 	docker push attend/fast-api-python:latest
 
 deploy:
-# 	kubectl create deployment hello-fastapi --image=registry.hub.docker.com/attend/fast-api-python:latest
-	kubectl apply -f deploy.yml
+	kubectl delete deployment hello-fastapi
+	kubectl create deployment hello-fastapi --image=registry.hub.docker.com/attend/fast-api-python
 
 all: install lint test format deploy
