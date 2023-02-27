@@ -7,12 +7,13 @@
 3.  Run `minikube dashboard --url` to view dashboard in a new terminal
 4.  Hover over link and "follow link"
 5.  Create a deployment:  `kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080`
-6. View deployment: `kubectl get deployments`
-7. View pods:  `kubectl get pods`
-8. Create service and expose it: `kubectl expose deployment hello-node --type=LoadBalancer --port=8080`
-9. View services:  `kubectl get services`
-10. Curl the url shown, for example: `curl http://192.168.49.2:31839` or change to your URL.
-11. Cleanup
+6.  View deployment: `kubectl get deployments`
+7.  View pods:  `kubectl get pods`
+8.  LoadBalancer access: `minikube tunnel`
+9.  Create service and expose it: `kubectl expose deployment hello-node --type=LoadBalancer --port=8080`
+10.  View services:  `kubectl get services`
+11.  Curl the url shown, for example: `curl http://192.168.49.2:31839` or change to your URL.
+12.  Cleanup
 ```bash
 kubectl delete service hello-node
 kubectl delete deployment hello-node
@@ -74,7 +75,7 @@ A repository to demonstrate FastAPI
 <img width="1835" alt="Screen Shot 2022-09-28 at 12 32 52 PM" src="https://user-images.githubusercontent.com/58792/192836641-cd7ef757-4a4b-4722-bb17-d88980f4e9d4.png">
 
  * Create ECR repository by right-click in Cloud9
- 
+
   <img width="1835" alt="Screen Shot 2022-09-28 at 12 34 44 PM" src="https://user-images.githubusercontent.com/58792/192837619-b4ebd0fc-d464-4c06-a382-0a25c6028579.png">
 
 * Navigate to ECR repo created <cdfastapi> or whatever you named it and follow "push" instructions
@@ -90,9 +91,10 @@ A repository to demonstrate FastAPI
   <img width="1835" alt="Screen Shot 2022-09-28 at 12 50 19 PM" src="https://user-images.githubusercontent.com/58792/192843483-e0a48ae6-95c1-4758-8928-40c33939cb9f.png">
 
   
+
 See following [buildspec.yml](https://github.com/nogibjj/fastapi-from-zero/blob/main/buildspec.yml)
 and [Makefile](https://github.com/nogibjj/fastapi-from-zero/blob/main/Makefile)
-  
+
 ## References
 
 * [FastAPI Docker docs](https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker)
