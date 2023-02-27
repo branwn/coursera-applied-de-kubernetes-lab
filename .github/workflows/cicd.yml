@@ -15,9 +15,11 @@ jobs:
         run: make install
       - name: lint
         run: make lint
-      - name: test
-        run: make test
       - name: format
         run: make format
+      - name: build
+        run: make build
+      - name: push
+        run: make push
       - name: deploy
         run: make deploy

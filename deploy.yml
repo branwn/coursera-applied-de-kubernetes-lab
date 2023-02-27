@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-fastapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-fastapi
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
+  template:
+    metadata:
+      labels:
+        app: hello-fastapi
+    spec:
+      containers:
+      - name: hello-pod
+        image: attend/fast-api-python:latest # 这一行修改了 
+        ports:
+        - containerPort: 8080

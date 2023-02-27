@@ -36,7 +36,6 @@ minikube stop
 10.  `minikube service hello-fastapi --url`
 11.  Curl web service: i.e. `curl http://192.168.49.2:31224`
 12.  Cleanup
-13.  Cleanup
 ```bash
 kubectl delete service hello-fastapi
 kubectl delete deployment hello-fastapi

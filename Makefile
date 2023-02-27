@@ -1,9 +1,9 @@
 install:
-	pip install --upgrade pip &&\
-		pip install -r requirements.txt
+	pip3 install --upgrade pip &&\
+		pip3 install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=main --cov=mylib test_*.py
+	python3 -m pytest -vv --cov=main --cov=mylib test_*.py
 
 format:	
 	black *.py logic/*.py
@@ -16,12 +16,16 @@ container-lint:
 
 refactor: format lint
 
+
+build:
+	docker build -t cdfastapi .
+
+push:
+	docker tag cdfastapi:latest attend/fast-api-python:latest
+	docker push attend/fast-api-python:latest
+
 deploy:
-	#example deploy to aws
-	#pushes container to ECR (your info will be different!)
-	#aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 561744971673.dkr.ecr.us-east-1.amazonaws.com
-	#docker build -t cdfastapi .
-	#docker tag cdfastapi:latest 561744971673.dkr.ecr.us-east-1.amazonaws.com/cdfastapi:latest
-	#docker push 561744971673.dkr.ecr.us-east-1.amazonaws.com/cdfastapi:latest
+# 	kubectl create deployment hello-fastapi --image=registry.hub.docker.com/attend/fast-api-python:latest
+	kubectl apply -f deploy.yml
 
 all: install lint test format deploy
